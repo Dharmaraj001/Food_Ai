@@ -1,0 +1,17 @@
+// application.js ===> configure express and middleware
+
+//import packages
+//create express app
+//                  client=>app=>route=>response
+//configure middlewares --> is a function runs bw req and res
+//export the app
+
+const express = require("express")
+const app = express();
+
+const cors = require("cors")
+
+app.use(cors());
+app.use(express.json())
+
+module.exports=app;
