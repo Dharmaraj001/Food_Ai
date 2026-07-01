@@ -1,7 +1,7 @@
 //User schema
 const mongoose = require("mongoose")
 
-const validatr = require("validator")
+const validator = require("validator")
 
 const bcrypt = require("bcryptjs")
 
