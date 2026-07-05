@@ -1,0 +1,1 @@
+const catchAsyncErros = require("../middlewares/catchAsyncErrors")
