@@ -1,23 +1,26 @@
 const mongoose = require("mongoose");
 
 const menuSchema = new mongoose.Schema({
-    menu:[
+    menu: [
         {
-            category:{type:String},
-            items:[{
-                type: mongoose.Schema.Types.ObjectId,
-                ref:"FoodItem"
-            }]
+            category: { type: String },
+            items: [
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "FoodItem"
+                }
+            ]
         }
     ],
-    restaurant:{
+    restaurant: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Restaurant"
     }
-},{
-    toJSON:{virtuals:true},
-    toObject:{virtuals:true}
-})
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+});
 
-menu = mongoose.model("Menu", menuSchema);
+const Menu = mongoose.model("Menu", menuSchema);
+
 module.exports = Menu;

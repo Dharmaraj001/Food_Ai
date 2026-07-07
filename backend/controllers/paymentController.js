@@ -1,4 +1,4 @@
-const catchAsyncErros = require("../middlewares/catchAsyncErrors")
+const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 
 const dotenv = require("dotenv")
 
