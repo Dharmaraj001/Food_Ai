@@ -1,111 +1,114 @@
-// import API from "../../utils/api";
+import API from "../../utils/api";
 
-// import {
-//   getMenusRequest,
-//   getMenusSuccess,
-//   getMenusFail,
+import {
+  getMenusRequest,
+  getMenusSuccess,
+  getMenusFail,
 
-//   createMenuRequest,
-//   createMenuSuccess,
-//   createMenuFail,
+  createMenuRequest,
+  createMenuSuccess,
+  createMenuFail,
 
-//   addItemRequest,
-//   addItemSuccess,
-//   addItemFail,
-// } from "../slices/menuSlice";
+  addItemRequest,
+  addItemSuccess,
+  addItemFail,
+} from "../slices/menuSlice";
 
-// // GET MENUS
-// export const getMenus = (id) => async (dispatch) => {
-//   try {
-//     dispatch(getMenusRequest());
+// GET MENUS
+export const getMenus = (id) => async (dispatch) => {
+  console.log("getMenus called with:", id);
+  try {
+    dispatch(getMenusRequest());
 
-//     const response = await API.get(
-//       `/v1/eats/stores/${id}/menus`
-//     );
+    const response = await API.get(
+      `/v1/eats/stores/${id}/menus`
+    );
 
-//     let menuData = [];
-//     let menuDocId = null;
+    console.log("API Response:", response.data);
 
-//     if (response.data.data?.length > 0) {
-//       menuDocId = response.data.data[0]._id;
-//       menuData = response.data.data[0].menu;
-//     }
+    let menuData = [];
+    let menuDocId = null;
 
-//     dispatch(
-//       getMenusSuccess({
-//         menu: menuData,
-//         menuId: menuDocId,
-//       })
-//     );
-//   } catch (error) {
-//     dispatch(
-//       getMenusFail(
-//         error.response?.data?.message || error.message
-//       )
-//     );
-//   }
-// };
+    if (response.data.data?.length > 0) {
+      menuDocId = response.data.data[0]._id;
+      menuData = response.data.data[0].menu;
+    }
 
-// // CREATE MENU
-// export const createMenu =
-//   ({ restaurantId, category }) =>
-//   async (dispatch) => {
-//     try {
-//       dispatch(createMenuRequest());
+    dispatch(
+      getMenusSuccess({
+        menu: menuData,
+        menuId: menuDocId,
+      })
+    );
+  } catch (error) {
+    dispatch(
+      getMenusFail(
+        error.response?.data?.message || error.message
+      )
+    );
+  }
+};
 
-//       const body = {
-//         restaurant: restaurantId,
-//         menu: [{ category, items: [] }],
-//       };
+// CREATE MENU
+export const createMenu =
+  ({ restaurantId, category }) =>
+  async (dispatch) => {
+    try {
+      dispatch(createMenuRequest());
 
-//       const { data } = await API.post(
-//         `/v1/eats/stores/${restaurantId}/menus`,
-//         body,
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
+      const body = {
+        restaurant: restaurantId,
+        menu: [{ category, items: [] }],
+      };
 
-//       dispatch(createMenuSuccess(data.data));
-//     } catch (error) {
-//       dispatch(
-//         createMenuFail(
-//           error.response?.data?.message || error.message
-//         )
-//       );
-//     }
-//   };
+      const { data } = await API.post(
+        `/v1/eats/stores/${restaurantId}/menus`,
+        body,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-// // ADD ITEM
-// export const addItemToMenu =
-//   ({ menuId, category, foodItemId, restaurantId }) =>
-//   async (dispatch) => {
-//     try {
-//       dispatch(addItemRequest());
+      dispatch(createMenuSuccess(data.data));
+    } catch (error) {
+      dispatch(
+        createMenuFail(
+          error.response?.data?.message || error.message
+        )
+      );
+    }
+  };
 
-//       const body = {
-//         category,
-//         foodItemId,
-//       };
+// ADD ITEM
+export const addItemToMenu =
+  ({ menuId, category, foodItemId, restaurantId }) =>
+  async (dispatch) => {
+    try {
+      dispatch(addItemRequest());
 
-//       const { data } = await API.patch(
-//         `/v1/eats/stores/${restaurantId}/menus/${menuId}/addItem`,
-//         body,
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
+      const body = {
+        category,
+        foodItemId,
+      };
 
-//       dispatch(addItemSuccess(data.data));
-//     } catch (error) {
-//       dispatch(
-//         addItemFail(
-//           error.response?.data?.message || error.message
-//         )
-//       );
-//     }
-//   };
+      const { data } = await API.patch(
+        `/v1/eats/stores/${restaurantId}/menus/${menuId}/addItem`,
+        body,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      dispatch(addItemSuccess(data.data));
+    } catch (error) {
+      dispatch(
+        addItemFail(
+          error.response?.data?.message || error.message
+        )
+      );
+    }
+  };

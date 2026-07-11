@@ -5,6 +5,7 @@ import { getMenus } from "../redux/actions/menuActions";
 import Fooditem from "./Fooditem";
 
 const Menu = () => {
+   console.log("Menu component rendered");
   const { id } = useParams();
   const dispatch = useDispatch();
 

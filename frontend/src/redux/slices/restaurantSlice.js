@@ -101,7 +101,9 @@ export const {
     sortByRatings,
     sortByReviews,
     showVegOnly,
-    clearError
-} =restaurantSlice.actions
+    clearError,
+
+    toggleVegOnly
+} = restaurantSlice.actions
 
 export default restaurantSlice.reducer
