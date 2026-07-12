@@ -97,13 +97,12 @@ exports.getAllMenus = catchAsync(async (req, res, next) => {
 
   const menu = await Menu.find(filter).populate("menu.items");
 
-  console.log("Menus found:", menu.length);
-
   res.status(200).json({
     status: "success",
     count: menu.length,
     data: menu,
   });
+
 });
 
 // CREATE MENU

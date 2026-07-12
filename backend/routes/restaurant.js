@@ -2,25 +2,25 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 
 const {
-  getAllrestaurent,
+  getAllRestaurants,
   createRestaurant,
-  getRestaurnt,
+  getRestaurant,
   deleteRestaurant,
 } = require("../controllers/restaurantController");
 
-const { protect } = require("../controllers/authController.js");
+const { protect } = require("../controllers/authController");
 const { authorizeRoles } = require("../middlewares/authorizeRoles");
 
 const menuRoutes = require("./menu");
 
 router
   .route("/")
-  .get(getAllrestaurent)
+  .get(getAllRestaurants)
   .post(protect, authorizeRoles("admin"), createRestaurant);
 
 router
   .route("/:storeId")
-  .get(getRestaurnt)
+  .get(getRestaurant)
   .delete(protect, authorizeRoles("admin"), deleteRestaurant);
 
 router.use("/:storeId/menus", menuRoutes);

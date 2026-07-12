@@ -1,28 +1,3 @@
-// We are creating a Global Error Handling Middleware in Express.
-
-// We write:
-// To handle all application errors in one place and send meaningful error messages to the client.
-
-// We use:
-// Whenever any error occurs in the application and next(error) is called.
-
-// It handle:
-// Invalid MongoDB Object IDs
-// Mongoose Validation Errors
-// Duplicate Key Errors (e.g., same email registered twice)
-// Invalid JWT Tokens
-// Expired JWT Tokens
-// Unexpected Server Errors
-
-// Development vs Production
-// Development: Shows detailed error information (message + stack trace) to help developers debug.
-// Production: Shows only user-friendly messages without exposing sensitive details.
-
-// This middleware acts as the central error manager of the application, catching all errors and sending appropriate responses based on the environment. 
-
-// Think of it as the hospital's emergency department — no matter what type of emergency comes in, it decides how to handle it and what information should be shared with the patient.
-
-
 const ErrorHandler = require("../utils/errorHandler");
 
 module.exports = (err, req, res, next) => {
