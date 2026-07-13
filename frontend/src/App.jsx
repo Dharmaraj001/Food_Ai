@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+import "./index.css"
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
@@ -32,7 +33,7 @@ function App() {
       <Router>
         <div className="App">
           <Header />
-          <div className="container container-fluids">
+          <div className="min-h-screen">
             <Routes>
               <Route path="/" element={<Home />} exact />
               <Route

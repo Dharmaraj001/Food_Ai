@@ -16,7 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { isAuthenticated, loading, error } = useSelector(
-    (state) => state.user,
+    (state) => state.user
   );
 
   useEffect(() => {
@@ -41,40 +41,84 @@ const Login = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="row wrapper">
-          <div className="col-10 col-lg-5">
-            <form className="shadow-lg" onSubmit={submitHandler}>
-              <h1 className="mb-3">Login</h1>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-100 px-4">
+          <div className="w-full max-w-md">
+            <form
+              onSubmit={submitHandler}
+              className="bg-white/80 backdrop-blur-xl shadow-2xl rounded-3xl p-8 border border-white/40"
+            >
+              <div className="text-center mb-8">
+                <h1 className="text-4xl font-bold text-gray-800">
+                  Welcome Back 👋
+                </h1>
+                <p className="text-gray-500 mt-2">
+                  Login to continue to your account
+                </p>
+              </div>
 
-              <div className="form-group">
-                <label>Email</label>
+              {/* Email */}
+              <div className="mb-5">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Email
+                </label>
+
                 <input
                   type="email"
-                  className="form-control"
+                  placeholder="Enter your email"
+                  className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition-all duration-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-200"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
 
-              <div className="form-group">
-                <label>Password</label>
+              {/* Password */}
+              <div className="mb-3">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Password
+                </label>
+
                 <input
                   type="password"
-                  className="form-control"
+                  placeholder="Enter your password"
+                  className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition-all duration-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-200"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
 
-              <Link to="/users/forgetPassword" className="float-right mb-4">
-                Forgot Password
-              </Link>
+              {/* Forgot Password */}
+              <div className="flex justify-end mb-6">
+                <Link
+                  to="/users/forgetPassword"
+                  className="text-sm font-medium text-orange-600 hover:text-orange-700 hover:underline"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
 
-              <button className="btn btn-block py3">LOGIN</button>
+              {/* Login Button */}
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-orange-500 py-3 text-white font-semibold text-lg shadow-lg transition-all duration-300 hover:bg-orange-600 hover:shadow-orange-300 hover:scale-[1.02] active:scale-95"
+              >
+                LOGIN
+              </button>
 
-              <Link to="/users/signup" className="float-right mt-3">
-                NEW USER?
-              </Link>
+              {/* Signup */}
+              <div className="mt-6 text-center">
+                <span className="text-gray-500">
+                  Don't have an account?{" "}
+                </span>
+
+                <Link
+                  to="/users/signup"
+                  className="font-semibold text-orange-600 hover:text-orange-700 hover:underline"
+                >
+                  Create Account
+                </Link>
+              </div>
             </form>
           </div>
         </div>
