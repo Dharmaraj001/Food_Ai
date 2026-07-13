@@ -107,136 +107,175 @@ const Register = () => {
     }
   };
 
-  return (
-    <>
-      <div className="row wrapper">
-        <div className="col-10 col-lg-5 registration-form">
-          <form
-            className="shadow-lg"
-            onSubmit={submitHandler}
-            encType="multipart/form-data"
-          >
-            <h1 className="mb-3">Register</h1>
+ return (
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-100 dark:from-gray-950 dark:via-gray-900 dark:to-black px-4 py-10">
+    <div className="w-full max-w-lg">
+      <form
+        onSubmit={submitHandler}
+        encType="multipart/form-data"
+        className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 p-8"
+      >
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
+            Create Account
+          </h1>
 
-            <div className="form-group">
-              <label htmlFor="name_field">Name</label>
-              <input
-                type="text"
-                id="name_field"
-                className="form-control"
-                name="name"
-                value={name}
-                onChange={onChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email_field">Email</label>
-              <input
-                type="email"
-                id="email_field"
-                className="form-control"
-                name="email"
-                value={email}
-                onChange={onChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password_field">Password</label>
-              <input
-                type="password"
-                id="password_field"
-                className="form-control"
-                name="password"
-                value={password}
-                onChange={onChange}
-                minLength={6}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="passwordConfirm_field">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="passwordConfirm_field"
-                className="form-control"
-                name="passwordConfirm"
-                value={passwordConfirm}
-                onChange={onChange}
-                minLength={6}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phoneNumber_field">Phone Number</label>
-              <input
-                type="tel"
-                id="phoneNumber_field"
-                className="form-control"
-                name="phoneNumber"
-                value={phoneNumber}
-                onChange={onChange}
-                pattern="[0-9]{10}"
-                maxLength={10}
-                placeholder="Enter 10-digit phone number"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="avatar_upload">Avatar</label>
-
-              <div className="d-flex align-items-center">
-                <div>
-                  <figure className="avatar mr-3 item-rtl">
-                    <img
-                      src={avatarPreview}
-                      className="rounded-circle"
-                      alt="Avatar Preview"
-                    />
-                  </figure>
-                </div>
-
-                <div className="custom-file">
-                  <input
-                    type="file"
-                    name="avatar"
-                    className="custom-file-input"
-                    id="customFile"
-                    accept="image/*"
-                    onChange={onChange}
-                  />
-
-                  <label
-                    className="custom-file-label"
-                    htmlFor="customFile"
-                  >
-                    Choose Avatar
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <button
-              id="register_button"
-              type="submit"
-              className="btn btn-block py-3"
-              disabled={loading}
-            >
-              {loading ? "REGISTERING..." : "REGISTER"}
-            </button>
-          </form>
+          <p className="mt-2 text-gray-500 dark:text-gray-400">
+            Join FoodGenAI today 🍽️
+          </p>
         </div>
-      </div>
-    </>
-  );
+
+        {/* Name */}
+
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="name_field"
+            name="name"
+            value={name}
+            onChange={onChange}
+            required
+            className="w-full rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-4 focus:ring-orange-200"
+          />
+        </div>
+
+        {/* Email */}
+
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email_field"
+            name="email"
+            value={email}
+            onChange={onChange}
+            required
+            className="w-full rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-4 focus:ring-orange-200"
+          />
+        </div>
+
+        {/* Password */}
+
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="password_field"
+            name="password"
+            value={password}
+            onChange={onChange}
+            minLength={6}
+            required
+            className="w-full rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-4 focus:ring-orange-200"
+          />
+        </div>
+
+        {/* Confirm Password */}
+
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Confirm Password
+          </label>
+
+          <input
+            type="password"
+            id="passwordConfirm_field"
+            name="passwordConfirm"
+            value={passwordConfirm}
+            onChange={onChange}
+            minLength={6}
+            required
+            className="w-full rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-4 focus:ring-orange-200"
+          />
+        </div>
+
+        {/* Phone */}
+
+        <div className="mb-6">
+          <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Phone Number
+          </label>
+
+          <input
+            type="tel"
+            id="phoneNumber_field"
+            name="phoneNumber"
+            value={phoneNumber}
+            onChange={onChange}
+            pattern="[0-9]{10}"
+            maxLength={10}
+            placeholder="Enter 10-digit phone number"
+            required
+            className="w-full rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-4 focus:ring-orange-200"
+          />
+        </div>
+
+        {/* Avatar */}
+
+        <div className="mb-8">
+          <label className="block mb-3 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Profile Picture
+          </label>
+
+          <div className="flex items-center gap-5">
+
+            <img
+              src={avatarPreview}
+              alt="Avatar Preview"
+              className="w-20 h-20 rounded-full object-cover border-4 border-orange-500 shadow-lg"
+            />
+
+            <label className="cursor-pointer rounded-xl bg-orange-100 dark:bg-gray-800 px-5 py-3 text-sm font-semibold text-orange-600 dark:text-orange-300 transition hover:bg-orange-200">
+
+              Choose Image
+
+              <input
+                type="file"
+                name="avatar"
+                accept="image/*"
+                onChange={onChange}
+                className="hidden"
+              />
+
+            </label>
+
+          </div>
+        </div>
+
+        {/* Button */}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full rounded-xl bg-gradient-to-r from-orange-500 to-red-500 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-orange-300 disabled:opacity-50"
+        >
+          {loading ? "Registering..." : "Create Account"}
+        </button>
+
+        <p className="mt-6 text-center text-gray-500 dark:text-gray-400">
+          Already have an account?
+          <span
+            onClick={() => navigate("/users/login")}
+            className="ml-2 cursor-pointer font-semibold text-orange-600 hover:underline"
+          >
+            Login
+          </span>
+        </p>
+
+      </form>
+    </div>
+  </div>
+);
 };
 
 export default Register;
